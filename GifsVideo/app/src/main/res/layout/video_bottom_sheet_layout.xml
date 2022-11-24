@@ -41,4 +41,31 @@
 
     </LinearLayout>
 
+    <LinearLayout
+        android:id="@+id/bs_download"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:padding="11dp"
+        android:background="?attr/selectableItemBackground"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/downloadicon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:src="@drawable/ic_download" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:textColor="?android:textColorPrimary"
+            android:layout_marginLeft="20dp"
+            android:text="@string/bs_download"/>
+
+    </LinearLayout>
+
+
 </LinearLayout>

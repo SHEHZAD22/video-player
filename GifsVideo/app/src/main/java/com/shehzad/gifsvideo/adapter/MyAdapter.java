@@ -1,5 +1,8 @@
 package com.shehzad.gifsvideo.adapter;
 
+import static android.content.ContentValues.TAG;
+import static android.content.Context.DOWNLOAD_SERVICE;
+
 import android.annotation.SuppressLint;
 import android.app.DownloadManager;
 import android.content.Context;
@@ -9,10 +12,12 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.Parcelable;
+import android.util.Log;
 import android.view.LayoutInflater;
 
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.CookieManager;
 import android.widget.ImageView;
 
 import android.widget.TextView;
@@ -81,10 +86,46 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
                 bottomSheetDialog.dismiss();
             });
 
+            //download section
+            bottomSheetView.findViewById(R.id.bs_download).setOnClickListener(view4 -> {
+                AlertDialog.Builder alertDialog = new AlertDialog.Builder(context);
+                alertDialog.setTitle("Download");
+                String url = model.getVideourl();
+                String title = model.getTitle();
+                alertDialog.setMessage(R.string.downloadRef);
+
+                alertDialog.setPositiveButton("OK", ((dialog, i) -> {
+                    DownloadManager.Request request = new DownloadManager.Request(Uri.parse(url));
+                    String halfTitle = getString(title);
+                    request.setTitle(halfTitle + ".mp4");
+                    request.setDescription("Downloading Please wait....");
+                    String cookie = CookieManager.getInstance().getCookie(url);
+                    request.addRequestHeader("cookie",cookie);
+                    request.setAllowedOverMetered(true);
+                    request.setVisibleInDownloadsUi(false);
+
+                    request.setDestinationInExternalPublicDir(Environment.DIRECTORY_DOWNLOADS, halfTitle+".mp4");
+                    request.allowScanningByMediaScanner();
+                    request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED);
+                    DownloadManager downloadManager = (DownloadManager) context.getSystemService(DOWNLOAD_SERVICE);
+                    downloadManager.enqueue(request);
+
+                    Toast.makeText(context, "Downloading Started.", Toast.LENGTH_SHORT).show();
+
+                    dialog.dismiss();
+                }));
+
+                alertDialog.setNegativeButton("Don't Save", (dialog, i) -> dialog.dismiss());
+                alertDialog.show();
+                bottomSheetDialog.dismiss();
+
+            });
+
             bottomSheetDialog.setContentView(bottomSheetView);
             bottomSheetDialog.show();
 
         });
+
 
         holder.itemView.setOnClickListener(holderView -> {
             Intent intent = new Intent(context, VidActivity.class);
@@ -94,6 +135,13 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
         });
 
 
+    }
+
+    private String getString( String s) {
+        final int mid = s.length() / 2;
+        String parts[] = {s.substring(0,mid), s.substring(mid)};
+        Log.d(TAG, "getString: " + parts[0]);
+        return parts[0];
     }
 
     @Override
@@ -141,3 +189,5 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
         }
     }
 }
+
+

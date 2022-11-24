@@ -21,7 +21,7 @@
     <string name="bs_share_video">Share video url</string>
 <!--    <string name="bs_play_a_video">Play a video</string>-->
 <!--    <string name="bs_details">Details</string>-->
-<!--    <string name="bs_download">Download</string>-->
+    <string name="bs_download">Download</string>
 <!--    <string name="bs_about">About</string>-->
 
     <!--    pop up menu strings -->
@@ -30,6 +30,6 @@
 <!--    <string name="pop_details">Details</string>-->
 <!--    <string name="pop_about">About</string>-->
     <string name="version_message">This is the latest version of this app. \n\n For upcoming updates, stay tuned. \n\n Thanks.</string>
-<!--    <string name="downloadRef">For reference see the notification panel. The file will be in progressing.</string>-->
+    <string name="downloadRef">For reference see the notification panel. The file will be in progressing.</string>
 </resources>
 
