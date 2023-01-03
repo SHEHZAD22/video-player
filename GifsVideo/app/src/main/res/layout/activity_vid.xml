@@ -7,46 +7,25 @@
     android:background="@color/black"
     tools:context=".VidActivity">
 
-
-    <com.google.android.exoplayer2.ui.StyledPlayerView
+    <com.google.android.exoplayer2.ui.PlayerView
         android:id="@+id/exoplayer"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:keepScreenOn="true"
+        app:controller_layout_id="@layout/custom_styled_controls"
         app:hide_on_touch="true"
+        app:player_layout_id="@layout/exo_player_view"
         app:resize_mode="fit"
         app:show_next_button="false"
         app:show_previous_button="false"
-        app:show_timeout="2000"
+        app:show_timeout="1500"
         app:shutter_background_color="@color/black"
         app:surface_type="surface_view"
-        app:use_controller="true">
-
-        <ImageView
-            android:id="@+id/fullscreen"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="end"
-            android:layout_marginRight="25dp"
-            android:layout_marginTop="25dp"
-            android:layout_marginLeft="25dp"
-            android:src="@drawable/ic_round_fullscreen_white" />
-
-        <ImageView
-            android:id="@+id/pip"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="25dp"
-            android:layout_marginLeft="23dp"
-            android:src="@drawable/ic_picture_in_picture" />
-
-    </com.google.android.exoplayer2.ui.StyledPlayerView>
+        app:use_controller="true" />
 
     <ProgressBar
-        android:id="@+id/progress_bar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:id="@+id/progressBarVid"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
         android:layout_centerInParent="true" />
-
-
 </RelativeLayout>

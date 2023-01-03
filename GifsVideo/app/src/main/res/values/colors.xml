@@ -21,5 +21,7 @@
 
     <color name="dialog">#ADB5BD</color>
 
+    <color name="sig_inup">#212344</color>
+
 </resources>
 

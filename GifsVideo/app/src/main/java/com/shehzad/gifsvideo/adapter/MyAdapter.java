@@ -29,6 +29,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
+import com.shehzad.gifsvideo.LookBasedActivity;
 import com.shehzad.gifsvideo.R;
 import com.shehzad.gifsvideo.VidActivity;
 import com.shehzad.gifsvideo.model.GifsModel;
@@ -60,7 +61,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
         return new MyViewHolder(view);
     }
 
-    @SuppressLint({"SetTextI18n"})
+    @SuppressLint("SetTextI18n")
     @Override
     public void onBindViewHolder(@NonNull MyAdapter.MyViewHolder holder, int position) {
         GifsModel model = gifsList.get(position);
@@ -111,14 +112,21 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
                     downloadManager.enqueue(request);
 
                     Toast.makeText(context, "Downloading Started.", Toast.LENGTH_SHORT).show();
-
                     dialog.dismiss();
                 }));
 
                 alertDialog.setNegativeButton("Don't Save", (dialog, i) -> dialog.dismiss());
                 alertDialog.show();
                 bottomSheetDialog.dismiss();
+            });
 
+            //look base section
+            bottomSheetView.findViewById(R.id.bs_lookBase).setOnClickListener(view5 -> {
+                Intent lookIntent = new Intent(context, LookBasedActivity.class);
+                lookIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                lookIntent.putExtra("url", model.getVideourl());
+                context.startActivity(lookIntent);
+                bottomSheetDialog.dismiss();
             });
 
             bottomSheetDialog.setContentView(bottomSheetView);

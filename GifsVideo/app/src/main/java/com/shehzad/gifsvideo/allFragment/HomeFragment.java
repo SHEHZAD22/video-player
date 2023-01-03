@@ -37,8 +37,6 @@ public class HomeFragment extends Fragment implements SwipeRefreshLayout.OnRefre
     SwipeRefreshLayout refreshLayout;
     View view;
 
-
-
     public HomeFragment() {
         // Required empty public constructor
     }
@@ -117,8 +115,6 @@ public class HomeFragment extends Fragment implements SwipeRefreshLayout.OnRefre
                     adapter.filter(query, gifsList);
                 }
                 return true;
-                
-
             }
         });
     }

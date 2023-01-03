@@ -58,4 +58,7 @@ dependencies {
 
     //library for media player i.e exoplayer
     implementation 'com.google.android.exoplayer:exoplayer:2.18.1'
+
+    //lookAtMe library
+    implementation 'com.github.Pradyuman7:LookAtMe:Version2.0'
 }
