@@ -1,16 +1,13 @@
 package com.shehzad.gifsvideo;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.net.Uri;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.WindowManager;
-
+import androidx.appcompat.app.AppCompatActivity;
 import com.pd.lookatme.LookAtMe;
 
 public class LookBasedActivity extends AppCompatActivity {
-    private LookAtMe lookBased;
+    LookAtMe lookBased;
     String url;
     Uri uri;
 
@@ -33,10 +30,9 @@ public class LookBasedActivity extends AppCompatActivity {
         if (url != null) {
             uri = Uri.parse(url);
         }
-        
+
         lookBased.init(this);
         lookBased.setVideoPath(url);
-        Log.d("uri", "Uri: " + uri);
         lookBased.start();
         lookBased.setLookMe();
     }

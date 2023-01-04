@@ -18,6 +18,4 @@
             android:enabled="false"
             android:title="@string/version" />
     </group>
-
-
 </menu>

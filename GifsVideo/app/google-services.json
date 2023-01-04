@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "536019298704",
+    "project_id": "gifsvideoauth",
+    "storage_bucket": "gifsvideoauth.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:536019298704:android:feedf74f9e3869c3ba6b15",
+        "android_client_info": {
+          "package_name": "com.shehzad.gifsvideo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "536019298704-q725g2jlsgs1ji59c7acv4mrk5lupds6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyApu-4HE30ybWNP5ULRYWw3uN3IMpqyLG0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "536019298704-q725g2jlsgs1ji59c7acv4mrk5lupds6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

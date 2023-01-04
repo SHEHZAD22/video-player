@@ -9,9 +9,7 @@ import android.content.Context;
 
 import android.content.Intent;
 import android.net.Uri;
-import android.os.Bundle;
 import android.os.Environment;
-import android.os.Parcelable;
 import android.util.Log;
 import android.view.LayoutInflater;
 
@@ -117,17 +115,19 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
 
                 alertDialog.setNegativeButton("Don't Save", (dialog, i) -> dialog.dismiss());
                 alertDialog.show();
+                
+                
                 bottomSheetDialog.dismiss();
             });
 
-            //look base section
-            bottomSheetView.findViewById(R.id.bs_lookBase).setOnClickListener(view5 -> {
-                Intent lookIntent = new Intent(context, LookBasedActivity.class);
-                lookIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                lookIntent.putExtra("url", model.getVideourl());
-                context.startActivity(lookIntent);
-                bottomSheetDialog.dismiss();
-            });
+//            //look base section
+//            bottomSheetView.findViewById(R.id.bs_lookBase).setOnClickListener(view5 -> {
+//                Intent lookIntent = new Intent(context, LookBasedActivity.class);
+//                lookIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+//                lookIntent.putExtra("url", model.getVideourl());
+//                context.startActivity(lookIntent);
+//                bottomSheetDialog.dismiss();
+//            });
 
             bottomSheetDialog.setContentView(bottomSheetView);
             bottomSheetDialog.show();

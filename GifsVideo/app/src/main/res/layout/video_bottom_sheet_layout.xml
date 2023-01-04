@@ -68,30 +68,30 @@
 
     </LinearLayout>
 
-    <LinearLayout
-        android:id="@+id/bs_lookBase"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center_vertical"
-        android:padding="11dp"
-        android:background="?attr/selectableItemBackground"
-        android:orientation="horizontal">
+<!--    <LinearLayout-->
+<!--        android:id="@+id/bs_lookBase"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:gravity="center_vertical"-->
+<!--        android:padding="11dp"-->
+<!--        android:background="?attr/selectableItemBackground"-->
+<!--        android:orientation="horizontal">-->
 
-        <ImageView
-            android:id="@+id/lookBaseIcon"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:src="@drawable/ic_eye_24" />
+<!--        <ImageView-->
+<!--            android:id="@+id/lookBaseIcon"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_gravity="center_vertical"-->
+<!--            android:src="@drawable/ic_eye_24" />-->
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:textColor="?android:textColorPrimary"
-            android:layout_marginLeft="20dp"
-            android:text="@string/bs_lookBase"/>
+<!--        <TextView-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_gravity="center_vertical"-->
+<!--            android:textColor="?android:textColorPrimary"-->
+<!--            android:layout_marginLeft="20dp"-->
+<!--            android:text="@string/bs_lookBase"/>-->
 
-    </LinearLayout>
+<!--    </LinearLayout>-->
 
 </LinearLayout>

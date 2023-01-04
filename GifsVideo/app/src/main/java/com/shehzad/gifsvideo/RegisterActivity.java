@@ -1,5 +1,6 @@
 package com.shehzad.gifsvideo;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -11,23 +12,32 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputLayout;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.shehzad.gifsvideo.preferences.ManagePreferences;
 
 
 public class RegisterActivity extends AppCompatActivity {
-    private TextInputLayout textUsername,textPassword,textEmail;
+    private TextInputLayout textConfirmPassword, textPassword, textEmail;
     private Button register;
     private TextView login;
-
-    final String PREF = "loginpreference";
-
-    SharedPreferences sharedPreferences;
     private ManagePreferences managePreferences;
+
+    FirebaseAuth firebaseAuth;
+    FirebaseUser firebaseUser;
+
+    private final String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
+    ProgressDialog progressDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,15 +52,23 @@ public class RegisterActivity extends AppCompatActivity {
 
         setContentView(R.layout.register_page);
 
-        textUsername = findViewById(R.id.textUsernameInput);
+        textConfirmPassword = findViewById(R.id.textConfirmPasswordInput);
         textPassword = findViewById(R.id.textPasswordInput);
         textEmail = findViewById(R.id.textEmailInput);
         register = findViewById(R.id.signupButton);
         login = findViewById(R.id.signinButton);
 
-        register.setOnClickListener(view -> setRegistration());
+        firebaseAuth = FirebaseAuth.getInstance();
+        firebaseUser = firebaseAuth.getCurrentUser();
 
-        textUsername.getEditText().addTextChangedListener(createTextWatcher(textUsername));
+        progressDialog = new ProgressDialog(this);
+        progressDialog.setMessage("Please wait...");
+        progressDialog.setTitle("Registration");
+        progressDialog.setCanceledOnTouchOutside(false);
+
+        register.setOnClickListener(view -> setRegistration1());
+
+        textConfirmPassword.getEditText().addTextChangedListener(createTextWatcher(textConfirmPassword));
         textPassword.getEditText().addTextChangedListener(createTextWatcher(textPassword));
         textEmail.getEditText().addTextChangedListener(createTextWatcher(textEmail));
 
@@ -61,52 +79,35 @@ public class RegisterActivity extends AppCompatActivity {
 
     }
 
-//    private void setRegistration() {
-//        sharedPreferences = getSharedPreferences(PREF, MODE_PRIVATE);
-//        String username = textUsername.getText().toString();
-//        String password = textPassword.getText().toString();
-//        String email = textEmail.getText().toString();
-//
-//        SharedPreferences.Editor editor = sharedPreferences.edit();
-//        editor.putString("username", username);
-//        editor.putString("password", password);
-//        editor.putString("email", email);
-//        editor.commit();
-//
-//        startLoginActivity();
-//        finish();
-//    }
-
-    //Validation and error messages
-    private void setRegistration() {
-        sharedPreferences = getSharedPreferences(PREF,MODE_PRIVATE);
-        String username = textUsername.getEditText().getText().toString();
+    //signup validation and error messages
+    private void setRegistration1() {
+        String confirmPassword = textConfirmPassword.getEditText().getText().toString();
         String password = textPassword.getEditText().getText().toString();
         String email = textEmail.getEditText().getText().toString();
 
-        SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putString("username", username);
-        editor.putString("password", password);
-        editor.putString("email", email);
-        editor.commit();
-
-        if (username.isEmpty()) textUsername.setError("Username must not be empty");
+        if (email.isEmpty()) textEmail.setError("Email must not be empty");
+        else if (!email.matches(emailPattern)) textEmail.setError("Enter Correct Email");
         else if (password.isEmpty()) textPassword.setError("Password must not be empty");
-        else if (email.isEmpty()) textEmail.setError("Email must not be empty");
-        else performRegistration();
-    }
-
-    private void performRegistration() {
-        textPassword.setEnabled(false);
-        textUsername.setEnabled(false);
-        register.setVisibility(View.INVISIBLE);
-
-        Handler handler = new Handler();
-        handler.postDelayed(() -> {
-            startLoginActivity();
-            finish();
-        }, 2000);
-
+        else if (password.length() < 6) textPassword.setError("Enter atleast 8 characters");
+        else if (!password.equals(confirmPassword))
+            textConfirmPassword.setError("Password not matched");
+        else {
+            progressDialog.show();
+            firebaseAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                @Override
+                public void onComplete(@NonNull Task<AuthResult> task) {
+                    if (task.isSuccessful()) {
+                        progressDialog.dismiss();
+                        startLoginActivity();
+                        finish();
+                        Toast.makeText(RegisterActivity.this, "Registered Succesfully", Toast.LENGTH_SHORT).show();
+                    } else {
+                        progressDialog.dismiss();
+                        Toast.makeText(RegisterActivity.this, "" + task.getException(), Toast.LENGTH_SHORT).show();
+                    }
+                }
+            });
+        }
     }
 
     //Error message cleanup

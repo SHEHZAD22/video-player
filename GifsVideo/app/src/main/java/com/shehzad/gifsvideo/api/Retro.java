@@ -20,12 +20,9 @@ public class Retro {
 
     //retro instance created only once
     private static Retro retroInstance = null;
-
     private String base_url = BuildConfig.BASE_URL;
     private Api api;
-
     private Retro() {
-
         //Authorization header for accessing the api
         OkHttpClient okHttpClient = new OkHttpClient.Builder()
                 .addInterceptor(
@@ -37,8 +34,7 @@ public class Retro {
                                 Request.Builder requestBuilder = orginal.newBuilder()
                                         .addHeader("Authorization",AUTH)
                                         .method(orginal.method(), orginal.body());
-
-
+                                
                                 Request request = requestBuilder.build();
                                 return chain.proceed(request);
                             }
