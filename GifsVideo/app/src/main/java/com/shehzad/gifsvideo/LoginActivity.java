@@ -1,20 +1,14 @@
 package com.shehzad.gifsvideo;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.os.Handler;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
-import android.view.View;
 import android.widget.Button;
-import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -30,7 +24,7 @@ public class LoginActivity extends AppCompatActivity {
     private TextInputLayout textEmail;
     private TextInputLayout textPassword;
     private Button loginButton;
-    private TextView register;
+    private TextView signup;
     private ManagePreferences preferences;
 
     FirebaseAuth firebaseAuth;
@@ -54,7 +48,7 @@ public class LoginActivity extends AppCompatActivity {
         textEmail = findViewById(R.id.textEmailInput);
         textPassword = findViewById(R.id.pwd);
         loginButton = findViewById(R.id.sign_in_button);
-        register = findViewById(R.id.sign_up_button);
+        signup = findViewById(R.id.sign_up_button);
         firebaseAuth = FirebaseAuth.getInstance();
         firebaseUser = firebaseAuth.getCurrentUser();
 
@@ -63,15 +57,16 @@ public class LoginActivity extends AppCompatActivity {
         progressDialog.setTitle("Registration");
         progressDialog.setCanceledOnTouchOutside(false);
 
+
         loginButton.setOnClickListener(view -> LoginActivity.this.onLoginClicked());
 
         textEmail.getEditText().addTextChangedListener(createTextWatcher(textEmail));
         textPassword.getEditText().addTextChangedListener(createTextWatcher(textPassword));
 
-        register.setOnClickListener(view -> {
-            Intent registerIntent = new Intent(this, RegisterActivity.class);
-            startActivity(registerIntent);
-            finish();
+        signup.setOnClickListener(view -> {
+            Intent intent = new Intent(this,RegisterActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            startActivity(intent);
         });
 
     }

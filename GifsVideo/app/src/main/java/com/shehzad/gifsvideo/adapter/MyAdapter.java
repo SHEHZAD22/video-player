@@ -27,7 +27,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
-import com.shehzad.gifsvideo.LookBasedActivity;
 import com.shehzad.gifsvideo.R;
 import com.shehzad.gifsvideo.VidActivity;
 import com.shehzad.gifsvideo.model.GifsModel;
@@ -59,7 +58,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
         return new MyViewHolder(view);
     }
 
-    @SuppressLint("SetTextI18n")
+    @SuppressLint({"SetTextI18n"})
     @Override
     public void onBindViewHolder(@NonNull MyAdapter.MyViewHolder holder, int position) {
         GifsModel model = gifsList.get(position);
@@ -85,6 +84,28 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
                 bottomSheetDialog.dismiss();
             });
 
+            //showing details of video
+            bottomSheetView.findViewById(R.id.bs_details).setOnClickListener(view3 -> {
+                AlertDialog.Builder alertDialog = new AlertDialog.Builder(context);
+                alertDialog.setTitle(R.string.bs_details);
+
+                String one = model.getTitle();
+                String two = model.getModel();
+                String three = model.getTags();
+                int four = model.getLikes();
+                String five = model.getChannel();
+
+                alertDialog.setMessage(
+                        "Title: " + one + "\n\n" +
+                                "Model: " + two + "\n\n" +
+                                "Tags: " + three + "\n\n" +
+                                "Likes: " + four + "\n\n" +
+                                "Channel: " + five + "\n\n");
+                alertDialog.setPositiveButton("OK", (dialog, i) -> dialog.dismiss());
+                alertDialog.show();
+                bottomSheetDialog.dismiss();
+            });
+
             //download section
             bottomSheetView.findViewById(R.id.bs_download).setOnClickListener(view4 -> {
                 AlertDialog.Builder alertDialog = new AlertDialog.Builder(context);
@@ -99,11 +120,11 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
                     request.setTitle(halfTitle + ".mp4");
                     request.setDescription("Downloading Please wait....");
                     String cookie = CookieManager.getInstance().getCookie(url);
-                    request.addRequestHeader("cookie",cookie);
+                    request.addRequestHeader("cookie", cookie);
                     request.setAllowedOverMetered(true);
                     request.setVisibleInDownloadsUi(false);
 
-                    request.setDestinationInExternalPublicDir(Environment.DIRECTORY_DOWNLOADS, halfTitle+".mp4");
+                    request.setDestinationInExternalPublicDir(Environment.DIRECTORY_DOWNLOADS, halfTitle + ".mp4");
                     request.allowScanningByMediaScanner();
                     request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED);
                     DownloadManager downloadManager = (DownloadManager) context.getSystemService(DOWNLOAD_SERVICE);
@@ -115,25 +136,13 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
 
                 alertDialog.setNegativeButton("Don't Save", (dialog, i) -> dialog.dismiss());
                 alertDialog.show();
-                
-                
                 bottomSheetDialog.dismiss();
             });
-
-//            //look base section
-//            bottomSheetView.findViewById(R.id.bs_lookBase).setOnClickListener(view5 -> {
-//                Intent lookIntent = new Intent(context, LookBasedActivity.class);
-//                lookIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-//                lookIntent.putExtra("url", model.getVideourl());
-//                context.startActivity(lookIntent);
-//                bottomSheetDialog.dismiss();
-//            });
 
             bottomSheetDialog.setContentView(bottomSheetView);
             bottomSheetDialog.show();
 
         });
-
 
         holder.itemView.setOnClickListener(holderView -> {
             Intent intent = new Intent(context, VidActivity.class);
@@ -142,12 +151,11 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
             context.startActivity(intent);
         });
 
-
     }
 
-    private String getString( String s) {
+    private String getString(String s) {
         final int mid = s.length() / 2;
-        String parts[] = {s.substring(0,mid), s.substring(mid)};
+        String parts[] = {s.substring(0, mid), s.substring(mid)};
         Log.d(TAG, "getString: " + parts[0]);
         return parts[0];
     }
@@ -162,10 +170,10 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
 
     //this method is for searchView
     public void filter(String query, ArrayList<GifsModel> list) {
-        //creating new list to filter our data
+        //creating new list to filter  data
         ArrayList<GifsModel> filteredList = new ArrayList<>();
 
-        //comparing the qury with the Model data
+        //comparing the query with the Model data
         for (GifsModel model : list) {
             if (
                     model.getTitle().toLowerCase().contains(query.toLowerCase()) ||
@@ -197,5 +205,3 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
         }
     }
 }
-
-

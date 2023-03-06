@@ -3,8 +3,6 @@ package com.shehzad.gifsvideo.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-import com.google.gson.annotations.SerializedName;
-
 public class GifsModel implements Parcelable {
     private int id;
     private String image;

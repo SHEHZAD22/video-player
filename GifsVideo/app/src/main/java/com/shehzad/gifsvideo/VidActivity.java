@@ -2,9 +2,7 @@ package com.shehzad.gifsvideo;
 
 import android.annotation.SuppressLint;
 import android.app.PictureInPictureParams;
-
 import android.content.pm.ActivityInfo;
-
 import android.content.res.Configuration;
 import android.net.Uri;
 import android.os.Build;
@@ -49,7 +47,7 @@ public class VidActivity extends AppCompatActivity {
         setContentView(R.layout.activity_vid);
         Objects.requireNonNull(getSupportActionBar()).hide();
 
-        //assging variable
+        //assigning variable
         playerView = findViewById(R.id.exoplayer);
         progressBar = findViewById(R.id.progressBarVid);
         fullscreen = findViewById(R.id.fullscreen);

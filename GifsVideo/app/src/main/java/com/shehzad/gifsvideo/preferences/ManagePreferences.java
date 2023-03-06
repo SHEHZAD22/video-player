@@ -10,7 +10,7 @@ public class ManagePreferences {
     private SharedPreferences preferences;
 
     public ManagePreferences(Context context) {
-        preferences = context.getSharedPreferences("gifs-video", Context.MODE_PRIVATE);
+        preferences = context.getSharedPreferences("xstream", Context.MODE_PRIVATE);
     }
 
     public boolean isLoggedIn() {

@@ -10,8 +10,11 @@ import retrofit2.http.Query;
 
 public interface Api {
 
-    //funny videos
+    //funny
     @GET("funny")
-    Call<List<GifsModel>> getFunny(@Query("_random") int random);
+    Call<List<GifsModel>> getHome(@Query("_random") int random);
+
+    @GET("moreVideos")
+    Call<List<GifsModel>> getMoreVideos(@Query("_random") int random);
 
 }

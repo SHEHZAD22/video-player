@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.shehzad.gifsvideo">
+    package="com.shehzad.gifsvideo" >
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
 
     <application
         android:allowBackup="true"
@@ -14,48 +14,38 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.GifsVideo"
-        android:usesCleartextTraffic="true">
+        android:usesCleartextTraffic="true" >
+<!--        <activity-->
+<!--            android:name=".ShortsActivity"-->
+<!--            android:exported="true"-->
+<!--            android:theme="@style/ShortsTheme"/>-->
         <activity
-            android:name=".WebViewActivity"
-            android:exported="false"
-            android:parentActivityName=".MainActivity">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
-        <activity
-            android:name=".LookBasedActivity"
-            android:exported="false">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
-        <activity
-            android:name=".VidActivity"
+            android:name="com.shehzad.gifsvideo.VidActivity"
             android:configChanges="orientation|screenSize|layoutDirection|screenLayout|smallestScreenSize"
             android:exported="true"
             android:resizeableActivity="true"
             android:supportsPictureInPicture="true"
             tools:ignore="UnusedAttribute" />
         <activity
-            android:name=".MainActivity"
+            android:name="com.shehzad.gifsvideo.MainActivity"
             android:exported="true" />
+
         <activity
-            android:name=".LoginActivity"
+            android:name="com.shehzad.gifsvideo.LoginActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".RegisterActivity"
+            android:name="com.shehzad.gifsvideo.RegisterActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".SplashScreenActivity"
+            android:name="com.shehzad.gifsvideo.SplashScreenActivity"
             android:exported="true"
             android:theme="@style/SplashTheme">
             <intent-filter>

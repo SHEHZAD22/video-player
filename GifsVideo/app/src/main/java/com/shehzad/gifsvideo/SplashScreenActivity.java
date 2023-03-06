@@ -3,11 +3,8 @@ package com.shehzad.gifsvideo;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.content.res.Resources;
 import android.os.Bundle;
 import android.os.Handler;
-import android.util.Log;
-import android.view.View;
 import android.view.WindowManager;
 
 public class SplashScreenActivity extends AppCompatActivity {
@@ -27,6 +24,7 @@ public class SplashScreenActivity extends AppCompatActivity {
             startActivity(intent);
             finish();
         }, time_out);
+
     }
 
 }

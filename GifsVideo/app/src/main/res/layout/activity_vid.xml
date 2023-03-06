@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:keepScreenOn="true"
-        app:controller_layout_id="@layout/custom_styled_controls"
+        app:controller_layout_id="@layout/custom_exo_control_layout"
         app:hide_on_touch="true"
         app:player_layout_id="@layout/exo_player_view"
         app:resize_mode="fit"

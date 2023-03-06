@@ -1,21 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
-
-    <item
-        android:id="@+id/nav_home"
-        android:icon="@drawable/ic_baseline_home_24"
-        android:title="@string/nav_home" />
-
-    <item
-        android:id="@+id/nav_web"
-        android:icon="@drawable/ic_baseline_search_24"
-        android:title="@string/nav_web" />
-
-    <group android:id="@+id/group_divider">
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
         <item
-            android:id="@+id/nav_version"
-            android:enabled="false"
-            android:title="@string/version" />
-    </group>
+            android:id="@+id/nav_home"
+            android:icon="@drawable/ic_baseline_home_24"
+            android:title="@string/nav_home" />
+
+        <group android:id="@+id/hd_divider">
+
+            <item
+                android:id="@+id/nav_funny"
+                android:title="@string/nav_funny" />
+
+        </group>
+
+
+        <group android:id="@+id/group_divider">
+
+            <item
+                android:id="@+id/nav_version"
+                android:enabled="false"
+                android:title="@string/version" />
+        </group>
+
+
 </menu>

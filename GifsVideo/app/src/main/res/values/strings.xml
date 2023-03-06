@@ -4,7 +4,7 @@
     <string name="downloads">Id</string>
     <string name="dialog_msg">Please Wait.....</string>
     <string name="search">Search</string>
-    <string name="actionbar_title">VIDEOS</string>
+    <string name="actionbar_title">GifsVideo</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="open">open</string>
@@ -15,27 +15,20 @@
 
     <!--       NAV_MENU Strings-->
     <string name="nav_home">Home</string>
-    <string name="nav_web">WebView</string>
+    <string name="nav_funny">Funny</string>
     <string name="version">VERSION 1.0</string>
 
     <!--    video bottom sheet layout strings-->
     <string name="bs_share_video">Share video url</string>
-    <!--    <string name="bs_play_a_video">Play a video</string>-->
-    <!--    <string name="bs_details">Details</string>-->
+    <string name="bs_details">Details</string>
     <string name="bs_download">Download</string>
-    <string name="bs_lookBase">Play video with look based</string>
-    <!--    <string name="bs_about">About</string>-->
 
     <!--    pop up menu strings -->
-    <string name="pop_share">Share video url</string>
-    <!--    <string name="pop_play">Play a video</string>-->
-    <!--    <string name="pop_details">Details</string>-->
-    <!--    <string name="pop_about">About</string>-->
     <string name="version_message">This is the latest version of this app. \n\n For upcoming updates, stay tuned. \n\n Thanks.</string>
     <string name="downloadRef">For reference see the notification panel. The file will be in progressing.</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="https">example.com</string>
-    <string name="loginFailedMessage">Username or password is not correct. Please try again.</string>
+
+    <!--    fragments strings-->
+    <string name="first_fragment_channel">Funny</string>
+
 </resources>
 
